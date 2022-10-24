@@ -9,32 +9,51 @@ function verifyAge() {
     event.preventDefault();
 
     const today = new Date;
+    const dayToday = today.getDate();
+    const monthToday = today.getMonth() + 1;
+    console.log(monthToday)
+    const yearToday = today.getFullYear();
     const dd = day.value;
     const mm = month.value;
     const yy = year.value;
 
     // check if all fields are filled
-    if (d.length == 0 || m.length == 0 || y.length==0) {
+    if (dd.length <= 0 || mm.length <= 0 || yy.length <= 0) {
         alert("All fields must be filled out");
         return false;
     }
-    else {
-          // formatting date of birth
-        const dob = new Date(`${mm}-${dd}-${yy}`);
-
-        const diff = today - dob;
-        // calculating age in days
-        const ageInDays = diff / (1000 * 60 * 60 * 24);
-    
-        const age = Math.floor(ageInDays / (365));
-        console.log(age);
-        if (age > 15) {
-            window.open("https://www.google.com/")
-            // open link in new tab if age > 15
-        }
-        else if (age < 15) {
-            alert("Your age is restricted");
-        }
+    else if(dd<1 || dd>31 || mm <1 || mm>12 || yy<1970 || yy>2022){
+        alert("Invalid Input");
+        return false;
     }
-    
+    else {
+        let diffOfYear = Number(yearToday) - yy;
+        console.log(diffOfYear)
+        if (diffOfYear > 15) {
+            window.open("https://www.google.com/")
+        }
+        else if (diffOfYear == 15) {
+            if (mm < monthToday) {
+                window.open("https://www.google.com/")
+            }
+            else if (mm == monthToday) {
+                if (dd <= dayToday) {
+                    window.open("https://www.google.com/")
+                }
+                else {
+                    alert("Your age is restricted");
+                }
+            }
+            else{
+                alert("Your age is restricted");
+            }
+
+        }
+        
+        else {
+        alert("Your age is restricted");
+    }
+
+}
+
 }
