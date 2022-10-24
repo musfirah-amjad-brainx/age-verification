@@ -22,6 +22,7 @@ function verifyAge() {
         alert("All fields must be filled out");
         return false;
     }
+    // check for invalid input
     else if(dd<1 || dd>31 || mm <1 || mm>12 || yy<1970 || yy>2022){
         alert("Invalid Input");
         return false;
@@ -29,9 +30,11 @@ function verifyAge() {
     else {
         let diffOfYear = Number(yearToday) - yy;
         console.log(diffOfYear)
+        // Redirect if difference between years is greater than 15
         if (diffOfYear > 15) {
             window.open("https://www.google.com/")
         }
+        // Compare Date and Month if difference between years is equal to 15
         else if (diffOfYear == 15) {
             if (mm < monthToday) {
                 window.open("https://www.google.com/")
@@ -49,7 +52,7 @@ function verifyAge() {
             }
 
         }
-        
+         // Alert if difference between years is less than 15
         else {
         alert("Your age is restricted");
     }
