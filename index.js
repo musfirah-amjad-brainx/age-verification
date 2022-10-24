@@ -11,7 +11,6 @@ function verifyAge() {
     const today = new Date;
     const dayToday = today.getDate();
     const monthToday = today.getMonth() + 1;
-    console.log(monthToday)
     const yearToday = today.getFullYear();
     const dd = day.value;
     const mm = month.value;
